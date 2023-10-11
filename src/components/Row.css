@@ -1,0 +1,128 @@
+.slider{
+  position: relative;
+}
+
+.slider__arrow-left{
+  background-clip: content-box;
+  /* 배경을 어디에 넣을 지 정하는 속성 */
+  padding: 20px 0;
+  box-sizing: border-box;
+  transition: .4s all ease-in-out;
+  cursor: pointer;
+  width: 80px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.slider__arrow-right{
+  background-clip: content-box;
+  /* 배경을 어디에 넣을 지 정하는 속성 */
+  padding: 20px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 80px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  visibility: hidden;
+  transition: .4s all ease-in-out;
+  z-index: 1000;
+}
+
+.arrow{
+  transition: .4 all ease-in-out;
+}
+
+.arrow:hover{
+  transform: scale(1.5);
+}
+
+.slider:hover .slider__arrow-left{
+  transition: .4s all ease-in-out;
+  visibility: visible;
+}
+
+.slider:hover .slider__arrow-right{
+  transition: .4s all ease-in-out;
+  visibility: visible;
+}
+
+.slider__arrow-left:hover{
+  background-color: rgb(20, 20, 20,.5);
+  transition: .4s all ease-in-out;
+}
+
+.slider__arrow-right:hover{
+  background-color: rgb(20, 20, 20,.5);
+  transition: .4s all ease-in-out;
+}
+
+.row_posters{
+  overflow-y: hidden;
+  display: flex;
+  padding: 20px 0 20px 20px;
+  scroll-behavior:smooth;
+}
+
+.row_posters::-webkit-scrollbar{
+  display: none;
+}
+
+.row__poster{
+  object-fit: contain;
+  width: 100%;
+  max-height: 144px;
+  margin-right: 10px;
+  border-radius: 4px;
+  transition: .4s all ease-in-out;
+  cursor: pointer;
+}
+
+.row__poster:hover{
+  transform: scale(1.08);
+}
+
+@media (min-width:1200px){
+  .row__poster{
+    max-height: 160px;
+  }
+}
+
+@media (max-width:768px){
+  .row__poster{
+    max-height: 280px;
+  }
+}
+
+.swiper-pagination{
+  text-align: center !important;
+}
+
+.swiper-pagination-bullet{
+  background-color: gray !important;
+}  
+
+.swiper-pagination-bullet-active{
+  background-color: white !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next{
+ color: white !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover{
+  font-weight: 700 !important;
+}

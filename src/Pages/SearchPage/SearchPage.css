@@ -1,0 +1,33 @@
+.search-container{
+  width: 100%;
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.movie_column-poster{
+  cursor: pointer;
+  transition: .3s;
+}
+
+.movie_column-poster :hover{
+  transform: scale(1.25);
+}
+
+.movie{
+  display: inline-block;
+}
+
+.movie_poster{
+  width: 90%;
+  border-radius: 5px;
+}
+
+.no-results{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  color: white;
+  font-weight: 700;
+  height: 100%;
+  padding: 8rem;
+}
