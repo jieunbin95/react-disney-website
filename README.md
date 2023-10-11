@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-홈페이지 Hosting URL: react-disney-plus-website.firebaseapp.com
+홈페이지 Hosting URL: [react-disney-plus-website.firebaseapp.com](https://react-disney-plus-website.firebaseapp.com/main)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
