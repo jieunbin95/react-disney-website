@@ -63,25 +63,26 @@ const Wrap = styled.div`
  transition: 2.5s cubic-bezier(.25, .46, .45, .94) .2s;
 
  img{
-  inset:0;
-  opacity:1;
   display:block;
+  position:absolute;
+  inset:0;
   height:100%;
+  width:100%;
   object-fit:cover;
-  width:100%;
+  opacity:1;
   z-index:1;
-  position:absolute;
   transition: opacity .5s ease-in-out;
- }
-
+}
+ 
  video{
+  position:absolute;
   width:100%;
   height:100%;
-  position:absolute;
-  top:0;
+   top:0;
   opacity:0;
   z-index:0;
- }
+}
+ 
 
  &:hover{
   box-shadow: rgba(0 0 0/80%) 0 40px 58px -16px;

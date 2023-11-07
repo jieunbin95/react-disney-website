@@ -1,22 +1,21 @@
 import { getAuth,GoogleAuthProvider,onAuthStateChanged,signInWithPopup, signOut } from 'firebase/auth'
 import React, { useEffect,useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { users } from '../store/userSlice'
 
 
 const Nav = () => {
-
-  const initialUserData=localStorage.getItem('userData') ?
-   JSON.parse(localStorage.getItem('userData')) : {};
-  // string타입을 다시 객체로 변환하고자 할 때 parse를 사용
-
   const [showhandle,setShowHandle]=useState(false)
   const {pathname}=useLocation()
   const [searchValue,setSearchValue]=useState('')
   const navigate=useNavigate()
   const auth = getAuth()
   const provider=new GoogleAuthProvider()
-  const [userData,setUserDate]=useState(initialUserData)
+
+  const dispatch=useDispatch()
+  const userData=useSelector(state=>state.user)
 
   useEffect(()=>{
     onAuthStateChanged(auth,(user)=>{
@@ -52,10 +51,14 @@ const Nav = () => {
   const handleAuth=()=>{
     signInWithPopup(auth,provider)
     .then(result=>{
-      setUserDate(result.user)
-      localStorage.setItem('userData',JSON.stringify(result.user))
-      // 새로고침시에도 유저의 정보가 남아있어야 함으로 localStorage에 다시 유저의 정보를 담아준다
-      // 객체나 배열을 저장할 경우 JSON.stringify를 이용해 텍스트로 변환 후 저장해준다
+    
+      dispatch(users.setUser({
+        id: result.user.uid,
+        email: result.user.email,
+        displayName: result.user.displayName,
+        photoURL: result.user.photoURL
+      }))
+    
     })
     .catch((e)=>{
       console.log(e.message)
@@ -65,7 +68,6 @@ const Nav = () => {
   const handleSignOut=()=>{
     signOut(auth)
     .then(()=>{
-      userData({})
       navigate('/')
     })
     .catch((e)=>{
@@ -77,7 +79,7 @@ const Nav = () => {
     <NavWrapper showhandle={showhandle}>
       <Logo onClick={()=>navigate('/')}>
         <img 
-        src='/images/logo.svg'/>
+        src='/images/logo.svg' alt='logo'/>
       </Logo>
 
       {pathname==="/"?<Login onClick={handleAuth}>Login</Login>:
